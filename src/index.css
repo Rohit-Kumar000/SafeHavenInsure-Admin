@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Theme (two modes, one palette):
+    Light  -> Champagne Gold  #F4D9A0  (page tint, borders, highlights)
+    Dark   -> Mocha Brown     #5B4632  (surfaces, sidebar)
+    Both   -> Burnt Amber     #C8792C  (buttons, links, accents)
+  Existing blue-* classes map to Burnt Amber, gold-* to Champagne, gray-* to the light
+  surfaces + mocha text, and slate-* to the dark (mocha) surfaces used by dark: variants.
+*/
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Sora", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Burnt Amber */
+  --color-blue-50: #fdf4e8;
+  --color-blue-100: #fae5cb;
+  --color-blue-200: #f3cb9c;
+  --color-blue-300: #f0b97c;
+  --color-blue-400: #ebaa62;
+  --color-blue-500: #cf8333;
+  --color-blue-600: #c8792c;
+  --color-blue-700: #a8601e;
+  --color-blue-800: #8a4c16;
+  --color-blue-900: #6b3a10;
+  --color-blue-950: #3b2412;
+
+  --color-indigo-500: #cf8333;
+  --color-indigo-600: #c8792c;
+  --color-indigo-700: #a8601e;
+  --color-indigo-800: #8a4c16;
+
+  /* Champagne Gold */
+  --color-gold-50: #fffbf1;
+  --color-gold-100: #fcf2da;
+  --color-gold-200: #f8e6bc;
+  --color-gold-300: #f4d9a0;
+  --color-gold-400: #e6c27a;
+  --color-gold-500: #d4a64f;
+  --color-gold-600: #9a6a24;
+  --color-gold-700: #7f5519;
+  --color-gold-800: #66440f;
+  --color-gold-900: #4f3711;
+
+  --color-purple-100: #f5e6c8;
+  --color-purple-400: #d2a572;
+  --color-purple-500: #b08d62;
+  --color-purple-600: #5b4632;
+  --color-purple-700: #4a3827;
+  --color-violet-100: #f5e6c8;
+  --color-violet-200: #f8e6bc;
+  --color-violet-300: #f4d9a0;
+  --color-violet-500: #b08d62;
+  --color-violet-700: #4a3827;
+
+  /* Light mode: champagne surfaces + mocha text */
+  --color-gray-50: #fbf0d6;
+  --color-gray-100: #f4d9a0;
+  --color-gray-200: #e6c98a;
+  --color-gray-300: #ddbb78;
+  --color-gray-400: #85704f;
+  --color-gray-500: #6d563d;
+  --color-gray-600: #5b4632;
+  --color-gray-700: #4a3827;
+  --color-gray-800: #382a1c;
+  --color-gray-900: #261c12;
+
+  /* Dark mode: mocha surfaces + champagne text */
+  --color-slate-50: #fbf6ec;
+  --color-slate-100: #f8efd9;
+  --color-slate-200: #f1e4c6;
+  --color-slate-300: #e3d2ae;
+  --color-slate-400: #d2bd94;
+  --color-slate-500: #bfa97f;
+  --color-slate-600: #86694f;
+  --color-slate-700: #6f5842;
+  --color-slate-800: #4d3a29;
+  --color-slate-900: #5b4632;
+  --color-slate-950: #3a2d20;
+}
+
+@layer base {
+  html { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  body { min-height: 100dvh; }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) { cursor: pointer; }
+  ::selection { background: var(--color-blue-200); color: var(--color-blue-950); }
+  :focus-visible { outline: 2px solid var(--color-blue-500); outline-offset: 2px; }
+
+  /* Keep scrollbars subtle while preserving enough contrast to find them. */
+  * { scrollbar-width: thin; scrollbar-color: var(--color-gray-300) transparent; }
+  .dark * { scrollbar-color: var(--color-slate-600) transparent; }
+  html { color-scheme: light; background-color: #f4d9a0; }
+  html.dark { color-scheme: dark; background-color: #3a2d20; }
+  input::placeholder, textarea::placeholder { opacity: 1; }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+  /* Mocha surface used by the sidebar and profile menu (both themes) */
+  .bg-luxe {
+    background-image:
+      radial-gradient(90% 60% at 100% 0%, rgba(200, 121, 44, 0.30) 0%, transparent 60%),
+      radial-gradient(80% 60% at 0% 100%, rgba(244, 217, 160, 0.14) 0%, transparent 60%),
+      linear-gradient(160deg, #6a5239 0%, #5b4632 50%, #46341f 100%);
+  }
+  .bg-gold-sheen { background-image: linear-gradient(135deg, #f4d9a0 0%, #e6c27a 55%, #d9a441 100%); }
+  .text-gold-gradient {
+    background-image: linear-gradient(135deg, #fbeccb, #f4d9a0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-hero {
+    background-color: #5b4632;
+    background-image:
+      radial-gradient(rgba(244, 217, 160, 0.10) 1px, transparent 1px),
+      radial-gradient(70% 90% at 100% 0%, rgba(200, 121, 44, 0.35) 0%, transparent 65%),
+      linear-gradient(120deg, #46341f 0%, #5b4632 55%, #6e5539 100%);
+    background-size: 22px 22px, 100% 100%, 100% 100%;
+  }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .pattern-dots {
+    background-image: radial-gradient(rgba(244, 217, 160, 0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-fade-up { animation: fade-up 0.35s ease-out both; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Login page text */
+.login-hero-title { color: #261c12; }
+.login-hero-description { color: #5b4632; }
+.login-hero-feature { color: #4a3827; }
+.login-hero-badge { color: #7f5519; background: #fcf2da; }
+.dark .login-hero-title { color: #ffffff; }
+.dark .login-hero-description { color: #e3d2ae; }
+.dark .login-hero-feature { color: #f1e4c6; }
+.dark .login-hero-badge { color: #f4d9a0; background: rgba(244, 217, 160, 0.14); }
