@@ -4,7 +4,7 @@
     var root = document.documentElement;
     if (dark) root.classList.add("dark");
     root.style.colorScheme = dark ? "dark" : "light";
-    root.style.backgroundColor = dark ? "#3a2d20" : "#f4d9a0";
+    root.style.backgroundColor = dark ? "#0f172a" : "#f4f7fb";
   } catch {
     // Theme initialization is optional when browser storage is unavailable.
   }

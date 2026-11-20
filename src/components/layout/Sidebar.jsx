@@ -73,7 +73,7 @@ function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
           <span className="relative shrink-0">
             <Icon className="h-5 w-5 transition group-hover:text-gold-300" />
             {path === "/chat" && chatUnread && (
-              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-blue-500 ring-2 ring-[#46341f]" />
+              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-blue-500 ring-2 ring-[#102a40]" />
             )}
           </span>
           {labels && <span className="whitespace-nowrap">{name}</span>}
@@ -93,7 +93,7 @@ function Sidebar({ collapsed, mobileOpen, onClose, onToggle }) {
         <button
           onClick={onToggle}
           title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          className="absolute -right-3 top-[72px] z-50 flex h-6 w-6 items-center justify-center rounded-full border border-gold-300/60 bg-[#46341f] text-gold-300 shadow-md transition hover:bg-gold-300 hover:text-[#46341f]"
+          className="absolute -right-3 top-[72px] z-50 flex h-6 w-6 items-center justify-center rounded-full border border-gold-300/60 bg-[#102a40] text-gold-300 shadow-md transition hover:bg-gold-300 hover:text-[#102a40]"
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>

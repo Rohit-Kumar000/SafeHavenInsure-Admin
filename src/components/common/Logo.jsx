@@ -39,7 +39,7 @@ function Logo({ showText = true, onDark = false }) {
 
         {/* Status dot: always on mobile, desktop only in icon-only mode */}
         <span
-          className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full ring-2 ${onDark ? "ring-[#46341f]" : "ring-white dark:ring-slate-900"} ${
+          className={`absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full ring-2 ${onDark ? "ring-[#102a40]" : "ring-white dark:ring-slate-900"} ${
             isActive ? "bg-green-500" : "bg-gray-400"
           } ${showText ? "lg:hidden" : ""}`}
         />

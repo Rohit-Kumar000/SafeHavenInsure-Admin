@@ -21,8 +21,8 @@ export function ThemeProvider({ children }) {
     const dark = theme === "dark";
     root.classList.toggle("dark", dark);
     root.style.colorScheme = dark ? "dark" : "light";
-    root.style.backgroundColor = dark ? "#3a2d20" : "#f4d9a0";
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#3a2d20" : "#5b4632");
+    root.style.backgroundColor = dark ? "#0f172a" : "#f4f7fb";
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#0f172a" : "#15324b");
     try {
       localStorage.setItem("theme", theme);
     } catch {
