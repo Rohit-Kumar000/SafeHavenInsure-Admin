@@ -14,7 +14,7 @@ import { useData } from "../context/DataContext";
 import { inputCls, btnGhost, card } from "../components/common/ui";
 import { downloadCSV, fmtDate, inr, parseISO, toISO, todayISO } from "../utils/helpers";
 
-const COLORS = ["#C8792C", "#E0B65A", "#10b981", "#B08D62", "#e11d48", "#8E5A2B"];
+const COLORS = ["#2563EB", "#14b8a6", "#10b981", "#0F766E", "#e11d48", "#1D4ED8"];
 const CLAIM_STATUSES = ["Registered", "Under Review", "Approved", "Settled", "Rejected"];
 const approvedOf = (c) => (c.status === "Approved" || c.status === "Settled" ? c.approvedAmount ?? c.amount : 0);
 
@@ -85,13 +85,13 @@ function ReportsPage() {
   const byPlan = Object.entries(polsIn.reduce((a, p) => ({ ...a, [p.plan]: (a[p.plan] || 0) + 1 }), {})).map(([name, value]) => ({ name, value }));
   const byStatus = CLAIM_STATUSES.map((s) => ({ name: s, Claims: claimsIn.filter((c) => c.status === s).length }));
 
-  const axis = dark ? "#D2BD94" : "#6D563D";
-  const grid = dark ? "#6F5842" : "#E6C98A";
+  const axis = dark ? "#94a3b8" : "#475569";
+  const grid = dark ? "#334155" : "#e2e8f0";
   const tip = {
-    backgroundColor: dark ? "#4D3A29" : "#ffffff",
-    border: `1px solid ${dark ? "#6F5842" : "#E2C996"}`,
+    backgroundColor: dark ? "#1e293b" : "#ffffff",
+    border: `1px solid ${dark ? "#334155" : "#e2e8f0"}`,
     borderRadius: 8,
-    color: dark ? "#fff" : "#261C12",
+    color: dark ? "#fff" : "#0f172a",
   };
 
   // Table rows
@@ -198,10 +198,10 @@ function ReportsPage() {
                     <CartesianGrid strokeDasharray="3 3" stroke={grid} vertical={false} />
                     <XAxis dataKey="label" stroke={axis} fontSize={12} tickLine={false} axisLine={false} />
                     <YAxis stroke={axis} fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
-                    <Tooltip contentStyle={tip} formatter={(v) => inr(v)} cursor={{ fill: dark ? "#ffffff10" : "#C8792C14" }} />
+                    <Tooltip contentStyle={tip} formatter={(v) => inr(v)} cursor={{ fill: dark ? "#ffffff10" : "#2563EB14" }} />
                     <Legend wrapperStyle={{ color: axis, fontSize: 12 }} />
-                    <Bar dataKey="Premium" fill="#C8792C" radius={[4, 4, 0, 0]} />
-                    <Bar dataKey="Claims" fill="#E0B65A" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="Premium" fill="#2563EB" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="Claims" fill="#14b8a6" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               )}
@@ -236,8 +236,8 @@ function ReportsPage() {
                     <CartesianGrid strokeDasharray="3 3" stroke={grid} vertical={false} />
                     <XAxis dataKey="name" stroke={axis} fontSize={12} tickLine={false} axisLine={false} />
                     <YAxis stroke={axis} fontSize={12} tickLine={false} axisLine={false} allowDecimals={false} />
-                    <Tooltip contentStyle={tip} cursor={{ fill: dark ? "#ffffff10" : "#C8792C14" }} />
-                    <Bar dataKey="Claims" fill="#C8792C" radius={[4, 4, 0, 0]} />
+                    <Tooltip contentStyle={tip} cursor={{ fill: dark ? "#ffffff10" : "#2563EB14" }} />
+                    <Bar dataKey="Claims" fill="#2563EB" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               )}

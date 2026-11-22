@@ -271,7 +271,7 @@ function RenewalsPage() {
           {shown.map((r) => {
             const urgent = r.daysLeft <= 7;
             const soon = r.daysLeft <= 30;
-            const tone = urgent ? "#e11d48" : soon ? "#d97706" : "#C8792C";
+            const tone = urgent ? "#e11d48" : soon ? "#d97706" : "#2563EB";
             const pct = Math.max(0, Math.min(1, (60 - Math.max(r.daysLeft, 0)) / 60));
             const C = 2 * Math.PI * 28;
             return (

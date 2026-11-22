@@ -14,9 +14,9 @@ import { useData } from "../context/DataContext";
 import useCountUp from "../hooks/useCountUp";
 import { inr, daysBetween, todayISO } from "../utils/helpers";
 
-const NAVY = "#5B4632";
-const GOLD = "#C8792C";
-const PALETTE = ["#C8792C", "#E0B65A", "#10b981", "#B08D62", "#e11d48", "#8E5A2B"];
+const NAVY = "#15324b";
+const GOLD = "#2563EB";
+const PALETTE = ["#2563EB", "#14b8a6", "#10b981", "#0F766E", "#e11d48", "#1D4ED8"];
 
 const compact = (n) => {
   const v = Math.abs(n);
@@ -185,7 +185,7 @@ function DashboardPage() {
     const cityData = Object.entries(byCity).map(([name, value]) => ({ name, value })).sort((a, b) => b.value - a.value).slice(0, 5);
 
     // claims pipeline
-    const stages = [["Registered", "#B08D62"], ["Under Review", "#E0B65A"], ["Approved", "#10b981"], ["Settled", "#C8792C"], ["Rejected", "#e11d48"]]
+    const stages = [["Registered", "#0F766E"], ["Under Review", "#14b8a6"], ["Approved", "#10b981"], ["Settled", "#2563EB"], ["Rejected", "#e11d48"]]
       .map(([name, color]) => ({ name, color, n: claims.filter((c) => c.status === name).length }));
 
     // collection health
@@ -203,8 +203,8 @@ function DashboardPage() {
     return { months, cur, prev, active, openClaims, collected, pendingAmt, kycOk, buckets, urgent, typeData, planData, cityData, stages, collectionRate, feed, now };
   }, [customers, vehicles, policies, claims, payments]);
 
-  const axis = dark ? "#D2BD94" : "#6D563D";
-  const grid = dark ? "#6F5842" : "#E6C98A";
+  const axis = dark ? "#94a3b8" : "#475569";
+  const grid = dark ? "#334155" : "#e2e8f0";
   const series = m.months.slice(12 - range);
   const totalRange = series.reduce((s, x) => s + x.revenue, 0);
   const sp = (key) => m.months.slice(6).map((x) => ({ v: x[key] }));
@@ -297,7 +297,7 @@ function DashboardPage() {
                   <XAxis dataKey="label" stroke={axis} fontSize={12} tickLine={false} axisLine={false} />
                   <YAxis stroke={axis} fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
                   <Tooltip content={<ChartTip />} />
-                  <Area type="monotone" name="Premium" dataKey="revenue" stroke={dark ? "#F4D9A0" : NAVY} strokeWidth={3} fill="url(#gRev)" activeDot={{ r: 6 }} />
+                  <Area type="monotone" name="Premium" dataKey="revenue" stroke={dark ? "#f4f7fb" : NAVY} strokeWidth={3} fill="url(#gRev)" activeDot={{ r: 6 }} />
                   <Area type="monotone" name="Claims paid" dataKey="claimsPaid" stroke={GOLD} strokeWidth={2.5} fill="url(#gClm)" activeDot={{ r: 5 }} />
                 </AreaChart>
               </ResponsiveContainer>
@@ -310,9 +310,9 @@ function DashboardPage() {
             <ResponsiveContainer width="100%" height="100%">
               <RadialBarChart innerRadius="72%" outerRadius="100%" data={[{ v: m.collectionRate, fill: "url(#gRad)" }]} startAngle={90} endAngle={-270}>
                 <defs>
-                  <linearGradient id="gRad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#F4D9A0" /><stop offset="100%" stopColor="#C8792C" /></linearGradient>
+                  <linearGradient id="gRad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#f4f7fb" /><stop offset="100%" stopColor="#2563EB" /></linearGradient>
                 </defs>
-                <RadialBar dataKey="v" background={{ fill: dark ? "#4D3A29" : "#FBF0D6" }} cornerRadius={20} />
+                <RadialBar dataKey="v" background={{ fill: dark ? "#1e293b" : "#f4f7fb" }} cornerRadius={20} />
               </RadialBarChart>
             </ResponsiveContainer>
             <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
@@ -373,7 +373,7 @@ function DashboardPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke={grid} horizontal={false} />
                   <XAxis type="number" stroke={axis} fontSize={11} tickLine={false} axisLine={false} tickFormatter={compact} />
                   <YAxis type="category" dataKey="name" stroke={axis} fontSize={11} tickLine={false} axisLine={false} width={90} />
-                  <Tooltip content={<ChartTip />} cursor={{ fill: dark ? "#ffffff10" : "#C8792C14" }} />
+                  <Tooltip content={<ChartTip />} cursor={{ fill: dark ? "#ffffff10" : "#2563EB14" }} />
                   <Bar dataKey="value" name="Premium" radius={[0, 8, 8, 0]} barSize={18}>
                     {m.planData.map((_, i) => <Cell key={i} fill={i === 0 ? GOLD : NAVY} />)}
                   </Bar>

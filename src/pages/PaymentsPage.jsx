@@ -124,10 +124,10 @@ function PaymentsPage() {
           <div className="mt-3 h-36">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthly} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
-                <XAxis dataKey="label" stroke="#F4D9A0" fontSize={11} tickLine={false} axisLine={false} />
-                <Tooltip cursor={{ fill: "#F4D9A01f" }} formatter={(v) => inr(v)} contentStyle={{ background: "#46341F", border: "1px solid #F4D9A066", borderRadius: 10, color: "#fff", fontSize: 12 }} />
+                <XAxis dataKey="label" stroke="#f4f7fb" fontSize={11} tickLine={false} axisLine={false} />
+                <Tooltip cursor={{ fill: "#f4f7fb1f" }} formatter={(v) => inr(v)} contentStyle={{ background: "#102a40", border: "1px solid #f4f7fb66", borderRadius: 10, color: "#fff", fontSize: 12 }} />
                 <Bar dataKey="v" name="Collected" radius={[8, 8, 0, 0]}>
-                  {monthly.map((_, i) => <Cell key={i} fill={i === monthly.length - 1 ? "#F4D9A0" : "#C8792C"} />)}
+                  {monthly.map((_, i) => <Cell key={i} fill={i === monthly.length - 1 ? "#f4f7fb" : "#2563EB"} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>

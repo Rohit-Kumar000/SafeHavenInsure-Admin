@@ -5,18 +5,18 @@ export const esc = (v) =>
 
 const css = `
 *{box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;color:#261C12;margin:0;padding:32px;font-size:13px}
+body{font-family:Arial,Helvetica,sans-serif;color:#0f172a;margin:0;padding:32px;font-size:13px}
 h1{font-size:22px;margin:0}
-h2{font-size:15px;margin:22px 0 8px;border-bottom:1px solid #DDBB78;padding-bottom:4px}
-.head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #C8792C;padding-bottom:12px}
-.muted{color:#6D563D}.right{text-align:right}
+h2{font-size:15px;margin:22px 0 8px;border-bottom:1px solid #cbd5e1;padding-bottom:4px}
+.head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #2563EB;padding-bottom:12px}
+.muted{color:#475569}.right{text-align:right}
 table{width:100%;border-collapse:collapse}
-td,th{padding:7px 8px;border:1px solid #E6C98A;text-align:left;vertical-align:top}
-th{background:#FBF0D6;width:32%}
-.total td,.total th{font-weight:bold;background:#FAF0DA}
+td,th{padding:7px 8px;border:1px solid #e2e8f0;text-align:left;vertical-align:top}
+th{background:#f4f7fb;width:32%}
+.total td,.total th{font-weight:bold;background:#f4f7fb}
 .badge{display:inline-block;padding:2px 10px;border-radius:99px;background:#dcfce7;color:#166534;font-weight:bold;font-size:12px}
 ul{margin:6px 0;padding-left:18px}
-.foot{margin-top:28px;font-size:11px;color:#6D563D}
+.foot{margin-top:28px;font-size:11px;color:#475569}
 `;
 
 export function printDocument(title, body) {
